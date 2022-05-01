@@ -5,7 +5,6 @@ import Logo from "../../assets/logo.png";
 
 const HomeNav = (props) => {
     const theme = useTheme();
-    console.log(theme.palette.primary);
 
     return (
         <Box sx={{ flexGrow: 1, float: { xs: "right", md: "right", lg: "left" } }}>
