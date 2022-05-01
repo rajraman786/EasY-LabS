@@ -27,7 +27,7 @@ const HomeNav = (props) => {
                             sx={{
                                 color: "white",
                                 fontWeight: "bold",
-                                margin: "0 15px",
+                                margin: "0 10px",
                                 "&:hover": {
                                     color: theme.palette.primary.main,
                                     borderBottom: `1px solid ${theme.palette.primary.main}`,
@@ -45,7 +45,7 @@ const HomeNav = (props) => {
                             sx={{
                                 color: "white",
                                 fontWeight: "bold",
-                                margin: "0 15px",
+                                margin: "0 10px",
                                 "&:hover": {
                                     color: theme.palette.primary.main,
                                     borderBottom: `1px solid ${theme.palette.primary.main}`,
@@ -63,7 +63,7 @@ const HomeNav = (props) => {
                             sx={{
                                 color: "white",
                                 fontWeight: "bold",
-                                margin: "0 15px",
+                                margin: "0 10px",
                                 "&:hover": {
                                     color: theme.palette.primary.main,
                                     borderBottom: `1px solid ${theme.palette.primary.main}`,
@@ -81,7 +81,7 @@ const HomeNav = (props) => {
                             sx={{
                                 color: "white",
                                 fontWeight: "bold",
-                                margin: "0 15px",
+                                margin: "0 10px",
                                 "&:hover": {
                                     color: theme.palette.primary.main,
                                     borderBottom: `1px solid ${theme.palette.primary.main}`,
