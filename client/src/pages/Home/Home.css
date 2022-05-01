@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lobster&display=swap');
+
+.home {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to right, #D5F7E6 -10%, #ABC7B8 150%);
+}
+/* .home::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    background: lightcoral;
+    padding-bottom: 100%;
+    width: 100%;
+    bottom: 0;
+    left: -35em;
+    transform: rotate(45deg);
+    transform-origin: top left;
+} */
+
+.left-grid {
+    background: linear-gradient(to right bottom, #049C53 50%, #ffffff00 0%);
+}
