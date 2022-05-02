@@ -20,7 +20,7 @@ const GetStartedNav = (props) => {
                             sx={{ mr: 2, display: { xs: "none", md: "block", lg: "block" } }}
                             href="/home"
                         >
-                            <img src={Logo} alt="Logo" width="120px" />
+                            <img src={Logo} alt="Logo" width="140px" />
                         </IconButton>
 
                         <Typography

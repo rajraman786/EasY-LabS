@@ -3,7 +3,7 @@
 .home {
     height: 100vh;
     width: 100vw;
-    background: linear-gradient(to right, #D5F7E6 -10%, #ABC7B8 150%);
+    /* background: linear-gradient(to right, #D5F7E6 -10%, #ABC7B8 150%); */
 }
 /* .home::after {
     content: "";
