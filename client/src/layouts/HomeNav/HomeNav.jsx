@@ -18,13 +18,13 @@ const HomeNav = (props) => {
                         sx={{ mr: 2, display: { xs: "none", md: "block", lg: "block" } }}
                         href="/home"
                     >
-                        <img src={Logo} alt="Logo" width="40px" />
+                        <img src={Logo} alt="Logo" width="50px" />
                     </IconButton>
                     <div>
                         <Typography
                             component="span"
                             sx={{
-                                color: "white",
+                                color: theme.palette.secondary.main,
                                 fontWeight: "bold",
                                 margin: "0 10px",
                                 "&:hover": {
@@ -42,7 +42,7 @@ const HomeNav = (props) => {
                         <Typography
                             component="span"
                             sx={{
-                                color: "white",
+                                color: theme.palette.secondary.main,
                                 fontWeight: "bold",
                                 margin: "0 10px",
                                 "&:hover": {
@@ -60,7 +60,7 @@ const HomeNav = (props) => {
                         <Typography
                             component="span"
                             sx={{
-                                color: "white",
+                                color: theme.palette.secondary.main,
                                 fontWeight: "bold",
                                 margin: "0 10px",
                                 "&:hover": {
@@ -78,7 +78,7 @@ const HomeNav = (props) => {
                         <Typography
                             component="span"
                             sx={{
-                                color: "white",
+                                color: theme.palette.secondary.main,
                                 fontWeight: "bold",
                                 margin: "0 10px",
                                 "&:hover": {
@@ -93,7 +93,6 @@ const HomeNav = (props) => {
                         >
                             about
                         </Typography>
-                        
                     </div>
                 </Toolbar>
             </AppBar>

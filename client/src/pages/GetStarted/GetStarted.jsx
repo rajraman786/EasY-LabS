@@ -35,6 +35,7 @@ const GetStarted = (props) => {
                                     textTransform: "capitalize",
                                     fontWeight: "100",
                                     width: { md: "800px" },
+                                    fontSize: "44px"
                                 }}
                             >
                                 {props.isLogin ? "Login" : "Sign Up"}
