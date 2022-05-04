@@ -1,6 +1,6 @@
 import { Box, AppBar, Toolbar, IconButton, Typography } from "@mui/material";
 import Button from "../../components/Button";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import Logo from "../../assets/long-logo.png";
 
@@ -78,9 +78,18 @@ const GetStartedNav = (props) => {
                             about
                         </Typography>
                     </div>
-                    <Button variant="outlined" color="secondary" sx={{ margin: "0 5px 0 0" }}>
-                        {props.loginOrSignUp}
-                    </Button>
+                    <Link
+                        to={
+                            props.loginOrSignUp === "Sign Up"
+                                ? "/create-account"
+                                : "/access-account"
+                        }
+                        style={{ textDecoration: "none" }}
+                    >
+                        <Button variant="outlined" color="secondary" sx={{ margin: "0 5px 0 0" }}>
+                            {props.loginOrSignUp}
+                        </Button>
+                    </Link>
                 </Toolbar>
             </AppBar>
         </Box>
