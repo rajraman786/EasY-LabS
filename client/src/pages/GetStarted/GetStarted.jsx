@@ -2,6 +2,7 @@ import "./GetStarted.css";
 import { Grid, Typography } from "@mui/material";
 import Button from "../../components/Button";
 import GetStartedNav from "../../layouts/GetStartedNav";
+import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 
 const GetStarted = (props) => {
@@ -35,7 +36,7 @@ const GetStarted = (props) => {
                                     textTransform: "capitalize",
                                     fontWeight: "100",
                                     width: { md: "800px" },
-                                    fontSize: "44px"
+                                    fontSize: "44px",
                                 }}
                             >
                                 {props.isLogin ? "Login" : "Sign Up"}
@@ -64,15 +65,20 @@ const GetStarted = (props) => {
                                 {props.isLogin ? "Login" : "Sign Up"}
                             </Button>
                             <Typography>
-                                Don't have an account?{" "}
-                                <span
-                                    style={{
-                                        fontWeight: "bold",
-                                        color: theme.palette.primary.main,
-                                    }}
+                                {props.isLogin ? "Don't" : "Have"} have an account?{" "}
+                                <Link
+                                    to={props.isLogin ? "/create-account" : "/access-account"}
+                                    style={{ textDecoration: "none" }}
                                 >
-                                    {props.isLogin ? "Sign Up" : "Login"}
-                                </span>
+                                    <span
+                                        style={{
+                                            fontWeight: "bold",
+                                            color: theme.palette.primary.main,
+                                        }}
+                                    >
+                                        {props.isLogin ? "Sign Up" : "Login"}
+                                    </span>
+                                </Link>
                                 .
                             </Typography>
                         </Grid>
@@ -98,15 +104,20 @@ const GetStarted = (props) => {
                                 {props.isLogin ? "Login" : "Sign Up"}
                             </Button>
                             <Typography>
-                                Don't have an account?{" "}
-                                <span
-                                    style={{
-                                        fontWeight: "bold",
-                                        color: theme.palette.primary.main,
-                                    }}
+                                {props.isLogin ? "Don't" : "Have"} have an account?{" "}
+                                <Link
+                                    to={props.isLogin ? "/create-account" : "/access-account"}
+                                    style={{ textDecoration: "none" }}
                                 >
-                                    {props.isLogin ? "Sign Up" : "Login"}
-                                </span>
+                                    <span
+                                        style={{
+                                            fontWeight: "bold",
+                                            color: theme.palette.primary.main,
+                                        }}
+                                    >
+                                        {props.isLogin ? "Sign Up" : "Login"}
+                                    </span>
+                                </Link>
                                 .
                             </Typography>
                         </Grid>

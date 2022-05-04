@@ -3,6 +3,7 @@ import ProgramImg from "../../assets/programming-image.png";
 import { Grid, Typography } from "@mui/material";
 import Button from "../../components/Button";
 import HomeNav from "../../layouts/HomeNav";
+import { Link } from "react-router-dom";
 
 const Home = (props) => {
     return (
@@ -54,13 +55,15 @@ const Home = (props) => {
                                 list of programs and editor will be available at one place .
                             </Typography>
                             <br />
-                            <Button
-                                variant="contained"
-                                size="large"
-                                sx={{ padding: "8px 40px", fontSize: "22px" }}
-                            >
-                                Get Started
-                            </Button>
+                            <Link to="/get-started"style={{ textDecoration: 'none'}}>
+                                <Button
+                                    variant="contained"
+                                    size="large"
+                                    sx={{ padding: "8px 40px", fontSize: "22px" }}
+                                >
+                                    Get Started
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </Grid>
