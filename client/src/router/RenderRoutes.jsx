@@ -51,6 +51,7 @@ const ROUTES = [
         key: "HOME",
         exact: false,
         component: Home,
+        props: {},
         // routes: [],
     },
     {
@@ -58,6 +59,29 @@ const ROUTES = [
         key: "GET STARTED",
         exact: "true",
         component: GetStarted,
+        props: {
+            isLogin: true,
+        },
+        routes: [],
+    },
+    {
+        path: "/access-account",
+        key: "ACCESS-ACCOUNT",
+        exact: "true",
+        component: GetStarted,
+        props: {
+            isLogin: true,
+        },
+        routes: [],
+    },
+    {
+        path: "/create-account",
+        key: "CREATE-ACCOUNT",
+        exact: "true",
+        component: GetStarted,
+        props: {
+            isLogin: false,
+        },
         routes: [],
     },
 ];
@@ -74,7 +98,7 @@ export const RenderRoutes = ({ routes }) => {
                             key={route.key}
                             path={route.path}
                             exact={route.exact}
-                            element={<route.component />}
+                            element={<route.component {...route.props} />}
                         />
                     );
                 })}
