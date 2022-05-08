@@ -5,6 +5,12 @@ const colors = require("colors");
 const morgan = require("morgan");
 const cors = require("cors");
 
+const connectDB = require("./config/db");
+
+dotenv.config({ path: "./config/config.env" });
+
+connectDB();
+
 const app = express();
 
 app.use(express.json());
@@ -19,6 +25,6 @@ app.get("/", (req, res) => {
     res.send("Up and running");
 });
 
-const PORT = process.env.PORT || 4509;
+const PORT = process.env.PORT;
 
 app.listen(PORT, console.log(`Server is up and running at port ${PORT}`));
