@@ -18,7 +18,7 @@ const userSchema = new mongoose.Schema({
     entryNo: {
         type: "String",
         trim: true,
-        unique: true,   
+        unique: true,
         lowercase: true,
         required: false,
         match: [/\d{2}[a-z]{3}\d{3}/, "Invalid Entry Number"],
@@ -36,5 +36,7 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = new mongoose.model("user", userSchema);
+
+User.createIndexes();
 
 module.exports = User;
