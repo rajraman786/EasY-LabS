@@ -1,0 +1,28 @@
+{
+  "name": "easy-labs-server",
+  "version": "1.0.0",
+  "description": "An interactive Web application to simulate programming labs of SMVDU so that students can execute given programs in the editor given and teacher can monitor their progress. This app tends to automate teachers work to some extent and also make students life easier as list of programs and editor will be available at one place .",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepdarshan21/EasY-LabS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deepdarshan21/EasY-LabS/issues"
+  },
+  "homepage": "https://github.com/deepdarshan21/EasY-LabS#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.16"
+  }
+}
