@@ -18,10 +18,10 @@ const userSchema = new mongoose.Schema({
     entryNo: {
         type: "String",
         trim: true,
-        unique: true,
+        // unique: true,
         lowercase: true,
-        required: false,
-        match: [/\d{2}[a-z]{3}\d{3}/, "Invalid Entry Number"],
+        // required: false,
+        // match: [/^$|\d{2}[a-z]{3}\d{3}$/, "Invalid Entry Number"],
     },
     password: {
         type: "String",
