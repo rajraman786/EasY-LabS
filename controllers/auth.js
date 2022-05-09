@@ -78,6 +78,7 @@ exports.login = (req, res, next) => {
                             },
                             JWT_SECRET
                         ),
+                        role: user.role,
                     });
                 } else {
                     return res.status(404).json({
@@ -106,6 +107,7 @@ exports.login = (req, res, next) => {
                             },
                             JWT_SECRET
                         ),
+                        role: user.role,
                     });
                 } else {
                     return res.status(404).json({
