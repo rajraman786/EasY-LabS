@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route, Redirect } from "react-router-dom";
 import Home from "../pages/Home";
 import GetStarted from "../pages/GetStarted";
+import SignUp from "../pages/SignUp";
 import NotFound from "../pages/NotFound";
 
 // const Login = lazy(() => import("pages/auth/Login"));
@@ -81,6 +82,26 @@ const ROUTES = [
         component: GetStarted,
         props: {
             isLogin: false,
+        },
+        routes: [],
+    },
+    {
+        path: "/signup",
+        key: "SIGNUP",
+        exact: false,
+        component: SignUp,
+        props: {
+            startSignUp: true,
+        },
+        routes: [],
+    },
+    {
+        path: "/complete-signup",
+        key: "SIGNUP",
+        exact: false,
+        component: SignUp,
+        props: {
+            startSignUp: false,
         },
         routes: [],
     },
