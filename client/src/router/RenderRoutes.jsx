@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import GetStarted from "../pages/GetStarted";
 import SignUp from "../pages/SignUp";
 import Login from "../pages/Login";
+import ProblemEditor from "../pages/ProblemEditor";
 import NotFound from "../pages/NotFound";
 
 // const Login = lazy(() => import("pages/auth/Login"));
@@ -111,6 +112,14 @@ const ROUTES = [
         key: "LOGIN",
         exact: false,
         component: Login,
+        props: {},
+        routes: [],
+    },
+    {
+        path: "/problem/:id",
+        key: "PROBLEM",
+        exact: true,
+        component: ProblemEditor,
         props: {},
         routes: [],
     },
