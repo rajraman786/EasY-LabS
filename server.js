@@ -25,6 +25,10 @@ app.get("/", (req, res) => {
     res.send("Up and running");
 });
 
+const authRoute = require("./routes/auth");
+
+app.use("/auth", authRoute);
+
 const PORT = process.env.PORT;
 
 app.listen(PORT, console.log(`Server is up and running at port ${PORT}`));
