@@ -26,8 +26,10 @@ app.get("/", (req, res) => {
 });
 
 const authRoute = require("./routes/auth");
+const compilerRoute = require("./routes/compiler");
 
 app.use("/auth", authRoute);
+app.use("/compiler", compilerRoute);
 
 const PORT = process.env.PORT;
 
