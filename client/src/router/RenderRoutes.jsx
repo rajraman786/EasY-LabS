@@ -5,10 +5,53 @@ import GetStarted from "../pages/GetStarted";
 import SignUp from "../pages/SignUp";
 import Login from "../pages/Login";
 import ProblemEditor from "../pages/ProblemEditor";
+import TeacherDashboard from "../pages/TeacherDashboard/TeacherDashboard";
+import All from "../pages/TeacherDashboard/AllLabs/All";
 import NotFound from "../pages/NotFound";
 
 // const Login = lazy(() => import("pages/auth/Login"));
 // const Home = lazy(() => import("pages/Home"));
+
+ 
+
+  const lab_details = {
+    all_labs : [
+        {
+            name:"C++",
+            instructor:"",
+            added : false,
+            compiler:"c/c++",
+            desc:"A basic and beginner friendly lab for learning C++",
+            
+        },
+        {
+            name:"Python",
+            instructor:"",
+            added : false,
+            compiler:"python",
+            desc:"A basic and beginner friendly lab for learning Python"
+        },
+        {
+            name:"Java",
+            instructor:"",
+            added : false,
+            compiler:"java",
+            desc:"A basic and beginner friendly lab for learning Java"
+
+        },
+        {
+            name:"C",
+            instructor:"",
+            added : false,
+            compiler:"c/c++",
+            desc:"A basic and beginner friendly lab for learning C"
+        }
+    ],
+
+    myLabs:[]
+    
+  }
+
 
 const ROUTES = [
     // {
@@ -123,6 +166,17 @@ const ROUTES = [
         props: {},
         routes: [],
     },
+    {
+        path: "/teacher-dashboard/*",
+        key: "TEACHER-DASHBOARD",
+        exact: true,
+        component: TeacherDashboard,
+        props: {
+            lab_details : lab_details
+        },
+        routes: [],
+    },
+    
 ];
 
 export default ROUTES;
