@@ -1,10 +1,51 @@
 const UserDB = require("../models/Users");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const sendEmail = require("../utils/sendEmail");
 
 require("dotenv").config("../.env");
 
 const JWT_SECRET = process.env.JWT_SECRET;
+
+// @desc    Allow users to sign up
+// route    POST /auth/verifyEmail
+// @access  Public
+exports.verifyEmail = (req, res, next) => {
+    const { email } = req.body;
+    console.log(email);
+
+    UserDB.findOne({ email })
+        .then(async (user) => {
+            if (!user) {
+                console.log("User not found");
+                try {
+                    await sendEmail({
+                        to: "deepdarshan21@gmail.com",
+                        subject: "Email verification",
+                        html: "Hii working finally",
+                    });
+                    res.status(200).json({
+                        success: true,
+                        message: "Email sent",
+                    });
+                    return;
+                } catch (err) {
+                    console.log(err);
+                    return;
+                }
+
+                return;
+            } else {
+                console.log("User found");
+
+                return;
+            }
+        })
+        .catch((err) => {
+            console.log("Fir aagaya maa chudane");
+            return;
+        });
+};
 
 // @desc    Allow users to sign up
 // route    POST /auth/signup
