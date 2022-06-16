@@ -69,7 +69,6 @@ const ProblemEditor = (props) => {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={6} sx={{ height: "100%" }}>
-                    CODE EDITOR
                     <CodeEditor />
                 </Grid>
             </Grid>

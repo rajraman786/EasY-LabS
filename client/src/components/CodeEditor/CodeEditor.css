@@ -2,11 +2,23 @@
     font-size: 16px;
     line-height: 1.4;
     /* padding-top: 20px; */
-    height: calc(100vh - 50px - 60px);
+    height: calc(100vh - 50px - 60px - 35px);
+    /* height: 1000px; */
 }
 /* .react-codemirror2 {
   height: 100vh;
 } */
 .CodeMirror:first-child {
     display: none;
+}
+
+.navigation {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: red; */
+}
+.left, .right {
+    margin: 0 10px;
 }
