@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Button from "../Button/Button";
-import Select, { Option, Label } from "../Select/Select";
+import Select, { Option } from "../Select/Select";
 import { Controlled as ControlledEditorComponent } from "react-codemirror2";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import axios from "axios";
 
 import "codemirror/lib/codemirror.css";
 
@@ -26,9 +27,9 @@ const Editor = ({ language, value, setEditorState }) => {
             id: 1,
             displayName: "Python",
             editorStyle: "text/x-python",
-            qpiData: {
-                name: "python",
-                version: 3,
+            apiData: {
+                name: "python3",
+                version: 4,
             },
             // singleLineStringErrors: false,
         },
@@ -45,13 +46,19 @@ const Editor = ({ language, value, setEditorState }) => {
             id: 3,
             displayName: "C",
             editorStyle: "text/x-csrc",
-            apiData: {},
+            apiData: {
+                name: "c",
+                version: 5,
+            },
         },
         {
             id: 4,
             displayName: "Java",
             editorStyle: "text/x-java",
-            apiData: {},
+            apiData: {
+                name: "java",
+                version: 4,
+            },
         },
     ];
     const [lang, setLang] = useState(JSON.stringify(langStore[0]));
@@ -69,6 +76,19 @@ const Editor = ({ language, value, setEditorState }) => {
         setVal(value);
     };
 
+    const handleRunCode = () => {
+        const input = prompt("Input");
+        axios
+            .post("http://localhost:4509/compiler", {
+                code: val,
+                input: input,
+                lang: JSON.parse(lang).apiData.name,
+                langVersion: JSON.parse(lang).apiData.version,
+            })
+            .then((res) => alert(res.data.output))
+            .catch((err) => alert("Error"));
+    };
+
     // const themeArray = [];
 
     return (
@@ -76,16 +96,7 @@ const Editor = ({ language, value, setEditorState }) => {
             <div className="navigation">
                 <span className="left">
                     {/* <Label>Language</Label> */}
-                    <Select
-                        value={lang}
-                        onChange={handleChangeLang}
-                        defaultValue={lang}
-                        // defaultValue={lang.displayName}
-                        // height="30px"
-                        // fontSize="10px"
-                        // label="Language"
-                        // autoWidth
-                    >
+                    <Select value={lang} onChange={handleChangeLang}>
                         {langStore.map((lan) => (
                             <Option key={lan.id} value={JSON.stringify(lan)}>
                                 {lan.displayName}
@@ -97,7 +108,12 @@ const Editor = ({ language, value, setEditorState }) => {
                     <SettingsOutlinedIcon fontSize="medium" />
                 </span>
             </div>
-            <div className="editor-container">
+            <div
+                className="editor-container"
+                onContextMenu={() => {
+                    return false;
+                }}
+            >
                 {/* {console.log("ehllp", JSON.parse(lang))} */}
                 <ControlledEditorComponent
                     onBeforeChange={handleChangeEditor}
@@ -126,7 +142,12 @@ const Editor = ({ language, value, setEditorState }) => {
                         // background: "red",
                     }}
                 >
-                    <Button variant="outlined" size="medium" sx={{ margin: " auto 15px" }}>
+                    <Button
+                        variant="outlined"
+                        size="medium"
+                        sx={{ margin: " auto 15px" }}
+                        onClick={handleRunCode}
+                    >
                         Sample Run
                     </Button>
                     <Button variant="contained" size="medium">
