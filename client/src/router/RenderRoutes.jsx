@@ -16,7 +16,8 @@ import NotFound from "../pages/NotFound";
 
   const lab_details = {
     all_labs : [
-        {
+        {   
+            lab_id : 1,
             name:"C++",
             instructor:"",
             added : false,
@@ -24,14 +25,16 @@ import NotFound from "../pages/NotFound";
             desc:"A basic and beginner friendly lab for learning C++",
             
         },
-        {
+        {   
+            lab_id : 2,
             name:"Python",
             instructor:"",
             added : false,
             compiler:"python",
             desc:"A basic and beginner friendly lab for learning Python"
         },
-        {
+        {   
+            lab_id : 3,
             name:"Java",
             instructor:"",
             added : false,
@@ -39,7 +42,8 @@ import NotFound from "../pages/NotFound";
             desc:"A basic and beginner friendly lab for learning Java"
 
         },
-        {
+        {   
+            lab_id : 4,
             name:"C",
             instructor:"",
             added : false,

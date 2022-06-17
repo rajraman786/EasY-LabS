@@ -19,6 +19,7 @@ const Create = ({labDetails,setLabDetails}) => {
         setValues({...values, name:event.target.value});
         
     }
+
     // const compilerChange = (event) => {
     //     setValues({...values, compiler:event.target.value});
     // }
@@ -33,17 +34,11 @@ const Create = ({labDetails,setLabDetails}) => {
  
     }
 
-    useEffect(() => {
-        setValues({...values,lab_id:labDetails.all_labs.length+1})
-    },[labDetails]);
-
-    //console.log(values.lab_id);
-
     const btnClick =(e) => {
         
         e.preventDefault();
         var newArray = [...labDetails.all_labs,values];
-        //console.log(newArray);
+        console.log(newArray);
         setLabDetails(
             {
                 ...labDetails,

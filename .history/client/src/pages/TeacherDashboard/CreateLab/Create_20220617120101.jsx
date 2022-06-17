@@ -43,7 +43,7 @@ const Create = ({labDetails,setLabDetails}) => {
         
         e.preventDefault();
         var newArray = [...labDetails.all_labs,values];
-        //console.log(newArray);
+        console.log(newArray);
         setLabDetails(
             {
                 ...labDetails,
