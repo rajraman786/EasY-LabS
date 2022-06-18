@@ -8,7 +8,7 @@ const AllProblems = ({labDetails}) => {
   return (
     <div className='problem-card-container'>
       {
-        labDetails.myLabs[lab_id].problems.map((problem,index) => {
+        labDetails.all_labs[lab_id]?.problems.map((problem,index) => {
           return (
             <ProblemCard key={index} priority={index} name={problem.problem_name} id={problem.problem_id} desc={problem.problem_desc} date={problem.date} />
         )})

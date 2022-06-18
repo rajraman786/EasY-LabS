@@ -11,7 +11,7 @@ import Students from './Lab/Students';
 import Enroll from './Lab/Enroll';
 import CreateProblem from './Problem/CreateProblem';
 
-const TeacherDashboard = ({lab_details}) => {
+const TeacherDashboard = ({connectedLabDetails:lab_details,setConnectedLabDetails}) => {
 
    
   const [inactive,setInactive] = useState(false);
@@ -19,6 +19,12 @@ const TeacherDashboard = ({lab_details}) => {
   const [labDetails,setLabDetails] = useState(lab_details);
     
   const teacherName = "Ms. Sonika Gupta";
+
+  useEffect(() => {
+    setConnectedLabDetails(labDetails)
+  },[labDetails]);
+
+  
 
     return ( <>
         <SideMenu labDetails={labDetails}  onCollapse={((inactive) => {

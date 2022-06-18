@@ -9,6 +9,7 @@ const Create = ({labDetails,setLabDetails}) => {
         instructor:"",
         compiler:"C/C++",
         desc:"",
+        problems:[]
     });
 
     const [dropdown,setDropdown] = useState("C/C++");
