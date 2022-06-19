@@ -1,5 +1,5 @@
 import { Divider, Grid, Typography } from "@mui/material";
-import CodeEditor from "../../components/CodeEditor";
+import CodeEditor from "../../components/CodeEditor/CodeEditor";
 import Logo from "../../assets/long-logo.png";
 
 const ProblemEditor = (props) => {
@@ -10,7 +10,7 @@ const ProblemEditor = (props) => {
             </div>
             <Grid
                 container
-                // rowSpacing={{ xs: 0, md: 0, lg: 0 }}
+                rowSpacing={{ xs: 0, md: 0, lg: 0 }}
                 // columnSpacing={4}
                 justifyContent="center"
                 sx={{ height: "calc(100vh - 50px)", padding: "0 15px" }}
@@ -69,7 +69,6 @@ const ProblemEditor = (props) => {
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={6} sx={{ height: "100%" }}>
-                    {/* CODE EDITOR */}
                     <CodeEditor />
                 </Grid>
             </Grid>
