@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Button from "../Button/Button";
-import Select, { Option } from "../Select/Select";
+import Button from "../../components/Button/Button";
+import Select, { Option } from "../../components/Select/Select";
 import { Controlled as ControlledEditorComponent } from "react-codemirror2";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import axios from "axios";
