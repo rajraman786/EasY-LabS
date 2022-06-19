@@ -4,9 +4,10 @@ import {NavLink} from "react-router-dom";
 const Create = ({labDetails,setLabDetails}) => {
 
     const [values,setValues] = useState({
+        lab_id:NaN,
         name:"",
         instructor:"",
-        compiler:"",
+        compiler:"C/C++",
         desc:"",
     });
 
@@ -15,9 +16,9 @@ const Create = ({labDetails,setLabDetails}) => {
     const [success,setSuccess] = useState(false);
 
     const labNameChange = (event) => {
-        setValues({...values, name:event.target.value})
+        setValues({...values, name:event.target.value});
+        
     }
-
     // const compilerChange = (event) => {
     //     setValues({...values, compiler:event.target.value});
     // }
@@ -29,25 +30,26 @@ const Create = ({labDetails,setLabDetails}) => {
     const changeDropdown = (event) => {
         setDropdown(event.target.value);
         setValues({...values, compiler:event.target.value});
-
+ 
     }
+
+    useEffect(() => {
+        setValues({...values,lab_id:labDetails.all_labs.length+1})
+    },[labDetails]);
+
+    //console.log(values.lab_id);
 
     const btnClick =(e) => {
         
         e.preventDefault();
-        
         var newArray = [...labDetails.all_labs,values];
-
+        //console.log(newArray);
         setLabDetails(
             {
                 ...labDetails,
                 all_labs:[...newArray],
                 added:false
-            } , () => {
-                    setSuccess(!success);
-                    console.log(success);
-            }
-        );
+            });
             
 
         
