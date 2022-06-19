@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../Button/Button";
 import Select, { Option } from "../Select/Select";
 import { Controlled as ControlledEditorComponent } from "react-codemirror2";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import axios from "axios";
+import { TextField, ToggleButton, ToggleButtonGroup } from "@mui/material";
 
 import "codemirror/lib/codemirror.css";
 
@@ -70,23 +71,35 @@ const Editor = ({ language, value, setEditorState }) => {
     const themeArray = ["material", "mdn-like", "the-matrix", "night", "dracula"];
     const [theme, setTheme] = useState("dracula");
 
-    const [val, setVal] = useState("");
+    const [code, setCode] = useState("");
     const handleChangeEditor = (editor, data, value) => {
         // setEditorState(value);
-        setVal(value);
+        setCode(value);
     };
 
-    const handleRunCode = () => {
-        const input = prompt("Input");
+    const [codeInput, setCodeInput] = useState("");
+    const [codeOutput, setCodeOutput] = useState("");
+
+    const [inputOrOutput, setInputOrOutput] = useState("input");
+
+    const [showInputOutput, setShowInputOutput] = useState(false);
+
+    const handleTestCode = () => {
+        setShowInputOutput(true);
+        document.getElementsByClassName("CodeMirror")[1].style.height =
+            "calc(100vh - 250px - 50px - 60px - 35px)";
+    };
+
+    const handleRun = () => {
         axios
             .post("http://localhost:4509/compiler", {
-                code: val,
-                input: input,
+                code: code,
+                input: codeInput,
                 lang: JSON.parse(lang).apiData.name,
                 langVersion: JSON.parse(lang).apiData.version,
             })
-            .then((res) => alert(res.data.output))
-            .catch((err) => alert("Error"));
+            .then((res) => setCodeOutput(res.data.output))
+            .catch((err) => console.log(err));
     };
 
     // const themeArray = [];
@@ -118,7 +131,7 @@ const Editor = ({ language, value, setEditorState }) => {
                 <ControlledEditorComponent
                     onBeforeChange={handleChangeEditor}
                     // value={value}
-                    value={val}
+                    value={code}
                     className="code-mirror-wrapper"
                     options={{
                         lineWrapping: true,
@@ -132,23 +145,78 @@ const Editor = ({ language, value, setEditorState }) => {
                 />
             </div>
             <div>
-                {false && <div>deepdarshan</div>}
+                {showInputOutput && (
+                    <div className="sample-run">
+                        <ToggleButtonGroup
+                            exclusive
+                            fullWidth
+                            value={inputOrOutput}
+                            onChange={(evt, value) => {
+                                if (value !== null) {
+                                    setInputOrOutput(value);
+                                }
+                            }}
+                        >
+                            <ToggleButton value="input">Input</ToggleButton>
+                            <ToggleButton value="output">Output</ToggleButton>
+                        </ToggleButtonGroup>
+                        <br/>
+                        <br/>
+                        {inputOrOutput === "input" && (
+                            <div className="input">
+                                <TextField
+                                    variant="outlined"
+                                    fullWidth
+                                    hiddenLabel
+                                    multiline
+                                    rows={5}
+                                    // sx={{height: "150px"}}
+                                    value={codeInput}
+                                    onChange={(evt) => setCodeInput(evt.target.value)}
+                                />
+                                <br />
+                                <br />
+                                <Button variant="outlined" size="medium" onClick={handleRun}>
+                                    Run
+                                </Button>
+                            </div>
+                        )}
+                        {inputOrOutput === "output" && (
+                            <div className="output">
+                                <TextField
+                                    variant="outlined"
+                                    fullWidth
+                                    hiddenLabel
+                                    multiline
+                                    rows={5}
+                                    sx={{
+                                        "& .Mui-disabled": {
+                                            WebkitTextFillColor: "#000",
+                                        },
+                                    }}
+                                    value={codeOutput}
+                                    disabled
+                                    // onChange={(evt) => setCodeInput(evt.target.value)}
+                                />
+                            </div>
+                        )}
+                    </div>
+                )}
                 <div
                     style={{
                         height: "60px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "flex-end",
-                        // background: "red",
                     }}
                 >
                     <Button
                         variant="outlined"
                         size="medium"
                         sx={{ margin: " auto 15px" }}
-                        onClick={handleRunCode}
+                        onClick={handleTestCode}
                     >
-                        Sample Run
+                        Test Code
                     </Button>
                     <Button variant="contained" size="medium">
                         Submit
