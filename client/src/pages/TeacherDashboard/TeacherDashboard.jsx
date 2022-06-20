@@ -10,8 +10,10 @@ import TodayProblems from './Lab/TodayProblems';
 import Students from './Lab/Students';
 import Enroll from './Lab/Enroll';
 import CreateProblem from './Problem/CreateProblem';
+import Submissions from './Lab/Submissions';
+import ProblemDetails from './Lab/ProblemDetails';
 
-const TeacherDashboard = ({lab_details}) => {
+const TeacherDashboard = ({connectedLabDetails:lab_details,setConnectedLabDetails}) => {
 
    
   const [inactive,setInactive] = useState(false);
@@ -19,6 +21,12 @@ const TeacherDashboard = ({lab_details}) => {
   const [labDetails,setLabDetails] = useState(lab_details);
     
   const teacherName = "Ms. Sonika Gupta";
+
+  useEffect(() => {
+    setConnectedLabDetails(labDetails)
+  },[labDetails]);
+
+  
 
     return ( <>
         <SideMenu labDetails={labDetails}  onCollapse={((inactive) => {
@@ -31,10 +39,12 @@ const TeacherDashboard = ({lab_details}) => {
                 <Route path="/my-labs"  element={<My labDetails={labDetails}/>} />
                 <Route path="/my-labs/:name/:index/*"  element={<Lab/>} >
                     <Route path="all" element={<AllProblems labDetails={labDetails}/>} />
-                    <Route path="today/" element={<TodayProblems/>} />
+                    <Route path="today" element={<TodayProblems/>} />
                     <Route path="add" element={<CreateProblem />}/>   
-                    <Route path="students" element={<Students/>} />
-                    <Route path="enroll" element={<Enroll/>} />
+                    <Route path="students" element={<Students labDetails={labDetails} />} />
+                    <Route path="submissions/:student" element={<Submissions labDetails={labDetails}  />}/>
+                    <Route path="problem-details/:problem" element={<ProblemDetails labDetails={labDetails} />}/>
+                    <Route path="enroll" element={<Enroll labDetails={labDetails} setLabDetails={setLabDetails} />} />
                 </Route>
           </Routes>
         </div>    

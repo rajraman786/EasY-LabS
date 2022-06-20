@@ -20,7 +20,7 @@ const All = (props) => {
             return (
                 <Card
                 key={index} 
-                priority={index}
+                lab_id={lab.lab_id-1}
                 labDetails={labDetails}
                 teacher={teacher}
                 setLabDetails={setLabDetails}

@@ -1,7 +1,6 @@
-import React from 'react';
-import {NavLink,useParams} from "react-router-dom";
+import React from 'react'
 
-const ProblemCard = ({name,id,date,desc,priority,click}) => {
+const ProblemCard = ({name,id,date,desc,priority,btnText,class:btnClass}) => {
   return (
       <>
     <div className={`problem-card ${priority ?"" : "first"}`}>
@@ -14,11 +13,8 @@ const ProblemCard = ({name,id,date,desc,priority,click}) => {
             </div>
         </div>
         <div className='right'>
-            <div className='problem-btn'>
-                <NavLink to={click}>
-                        <button>View Problem</button>
-                </NavLink>
-                
+            <div className={`problem-btn-${btnClass}`}>
+                <button>{btnText}</button>
             </div>
         </div>
     </div>

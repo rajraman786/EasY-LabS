@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams,useLocation,Outlet,NavLink } from 'react-router-dom';
 
 const Lab = () => {
-    const {name,index} = useParams();
+    const {name,lab_id} = useParams();
     const location = useLocation();
 
   return (
