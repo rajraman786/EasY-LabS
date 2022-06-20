@@ -15,7 +15,15 @@ const Login = (props) => {
         setSignupDetails({ ...loginDetails, [e.target.name]: e.target.value });
     };
 
-    const login = async () => {};
+    const login = async () => {
+        axios
+            .post("http://localhost:4509/auth/login", {
+                email: loginDetails.email,
+                password: loginDetails.password,
+            })
+            .then((res) => alert("login successfull"))
+            .catch((err) => alert("Error"));
+    };
 
     return (
         <div className="signup">
@@ -45,6 +53,8 @@ const Login = (props) => {
                             value={loginDetails.email}
                             onChange={handleSignupDetails}
                         />
+                        <br />
+                        <br />
                         <TextField
                             variant="standard"
                             // helperText="Please enter your email"
@@ -75,7 +85,6 @@ const Login = (props) => {
                         >
                             Login With Google
                         </Button>
-                        
                     </Box>
                 </Grid>
                 <Grid item xs={12}>
