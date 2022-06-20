@@ -1,5 +1,5 @@
 import { Divider, Grid, Typography } from "@mui/material";
-import CodeEditor from "../../components/CodeEditor/CodeEditor";
+import CodeEditor from "../../layouts/CodeEditor/CodeEditor";
 import Logo from "../../assets/long-logo.png";
 
 const ProblemEditor = (props) => {
