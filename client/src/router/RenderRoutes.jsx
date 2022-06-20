@@ -42,7 +42,8 @@ import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
           sample_output:"Yes",
           date:"3-05-2001"
         }
-      ]
+      ],
+        students:[]
         },
         {   
             lab_id : 2,
@@ -68,7 +69,8 @@ import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
           sample_output:"Yes",
           date:"3-05-2001"
         }
-      ]
+      ],
+        students:[]
         },
         {   
             lab_id : 3,
@@ -94,7 +96,8 @@ import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
           sample_output:"Yes",
           date:"3-05-2001"
         }
-      ]
+      ],
+        students:[]
 
         },
         {   
@@ -121,7 +124,8 @@ import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
           sample_output:"Yes",
           date:"3-05-2001"
         }
-      ]
+      ],
+        students:[]
         }
     ],
 
@@ -133,10 +137,12 @@ import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
             name: "Kunal Kanotra",
             entry_no: "19BCS047",
             department: "CSE",
-            myLabs: [1,3],
+            myLabs: [],
             problems_solved: {
-                1 : [1],
-                3 : [2]
+                "1" : [1],
+                "2" : [],
+                "3" : [],
+                "4" : []
             }
         },
         {
@@ -144,8 +150,13 @@ import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
             name: "Deep",
             entry_no: "19BCS031",
             department: "CSE",
-            myLabs: [1,4],
-            problems_solved: [1,2]
+            myLabs: [],
+            problems_solved: {
+                "1" : [1],
+                "2" : [],
+                "3" : [],
+                "4" : []
+            }
         }
     ]
     
