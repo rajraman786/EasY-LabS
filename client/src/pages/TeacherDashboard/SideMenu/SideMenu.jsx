@@ -59,6 +59,7 @@ const SideMenu = ({onCollapse,labDetails}) => {
             to={menu.to}
             onClick={() => setInactive(false)}
             inactive={inactive}
+            labDetails={labDetails}
             />
           ))}
           {/* <li>

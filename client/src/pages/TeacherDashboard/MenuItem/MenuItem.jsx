@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const MenuItem = (props) => {
-    const {name , subMenus , icon , onClick , inactive ,to} = props;
+    const {name , subMenus , icon , onClick , inactive ,to , labDetails} = props;
 
     const [expand,setExpand] = useState(false);
 
@@ -18,9 +18,9 @@ const MenuItem = (props) => {
               {subMenus && subMenus.length>0 ? (
                   <ul className={`sub-menu ${expand && !inactive ? "active" : ""}`}>
                     {
-                        subMenus.map((menu,index)=>(
-                            <NavLink to={`my-labs/${menu.name.toLowerCase()}/${index}/all`} key={index}>
-                                {menu.name.toUpperCase()}
+                        subMenus.map((lab_id,index)=>(
+                            <NavLink to={`my-labs/${labDetails.all_labs[lab_id-1].name.toLowerCase()}/${lab_id-1}/all`} key={index}>
+                                {labDetails.all_labs[lab_id-1].name.toUpperCase()}
                             </NavLink>
                         ))
                     } 
