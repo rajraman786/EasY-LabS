@@ -4,8 +4,11 @@ import { FcGoogle } from "react-icons/fc";
 import { useState } from "react";
 import Logo from "../../assets/long-logo.png";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = (props) => {
+    const navigate = useNavigate();
+
     const [signupDetails, setSignupDetails] = useState({
         email: "",
         name: "",
@@ -19,27 +22,57 @@ const SignUp = (props) => {
         setSignupDetails({ ...signupDetails, [e.target.name]: e.target.value });
     };
 
-    const signup = async () => {
-        // if (signupDetails.confirmPassword !== signupDetails.password) {
-        //     alert("Password and Confirm Password not matchs");
-        // } else {
-        //     await axios
-        //         .post("http://localhost:4509/auth/signup", {
-        //             name: signupDetails.name,
-        //             email: signupDetails.email,
-        //             role: signupDetails.role,
-        //             entryNo: signupDetails.entryNo,
-        //             password: signupDetails.password,
-        //         })
-        //         .then((res) => {
-        //             alert(res.data.successMessage);
-        //             // navigate("/login");
-        //         })
-        //         .catch((err) => {
-        //             // setSuccessMessage("");
-        //             alert(err.response.data.errorMessage);
-        //         });
-        // }
+    // const signup = async () => {
+    // if (signupDetails.confirmPassword !== signupDetails.password) {
+    //     alert("Password and Confirm Password not matchs");
+    // } else {
+    //     await axios
+    //         .post("http://localhost:4509/auth/signup", {
+    //             name: signupDetails.name,
+    //             email: signupDetails.email,
+    //             role: signupDetails.role,
+    //             entryNo: signupDetails.entryNo,
+    //             password: signupDetails.password,
+    //         })
+    //         .then((res) => {
+    //             alert(res.data.successMessage);
+    //             // navigate("/login");
+    //         })
+    //         .catch((err) => {
+    //             // setSuccessMessage("");
+    //             alert(err.response.data.errorMessage);
+    //         });
+    // }
+    // };
+    const handleSignUp = () => {
+        const emailRegex = /^[a-z0-9.]+@smvdu.ac.in$/;
+        if (emailRegex.test(signupDetails.email)) {
+            const studentRoleRegex = /[0-9]/g;
+            if (signupDetails.email.search(studentRoleRegex) !== -1) {
+                setSignupDetails({ ...signupDetails, role: "Student" });
+            } else {
+                setSignupDetails({ ...signupDetails, role: "Teacher" });
+            }
+            navigate("/complete-signup");
+        } else {
+            alert("Plese enter correct email");
+        }
+    };
+
+    const handleCompleteSignUp = () => {
+        if (signupDetails.password !== signupDetails.confirmPassword) {
+            alert("Confirm password not matches with password");
+            return;
+        }
+        axios
+            .post("http://localhost:4509/auth/signup", {
+                name: signupDetails.name,
+                email: signupDetails.email,
+                password: signupDetails.password,
+                role: signupDetails.role,
+            })
+            .then((res) => alert("SignUp complete"))
+            .catch((err) => alert("Error"));
     };
 
     return (
@@ -76,7 +109,7 @@ const SignUp = (props) => {
                                 variant="contained"
                                 fullWidth
                                 sx={{ margin: "15px 0" }}
-                                onClick={signup}
+                                onClick={handleSignUp}
                             >
                                 Sign Up
                             </Button>
@@ -103,6 +136,8 @@ const SignUp = (props) => {
                                 value={signupDetails.email}
                                 // onChange={handleSignupDetails}
                             />
+                            <br />
+                            <br />
                             <TextField
                                 variant="standard"
                                 // helperText="Please enter your email"
@@ -114,6 +149,8 @@ const SignUp = (props) => {
                                 value={signupDetails.name}
                                 onChange={handleSignupDetails}
                             />
+                            <br />
+                            <br />
                             <TextField
                                 variant="standard"
                                 // helperText="Please enter your email"
@@ -125,6 +162,8 @@ const SignUp = (props) => {
                                 value={signupDetails.role}
                                 // onChange={handleSignupDetails}
                             />
+                            <br />
+                            <br />
                             <TextField
                                 variant="standard"
                                 // helperText="Please enter your email"
@@ -136,6 +175,8 @@ const SignUp = (props) => {
                                 value={signupDetails.password}
                                 onChange={handleSignupDetails}
                             />
+                            <br />
+                            <br />
                             <TextField
                                 variant="standard"
                                 // helperText="Please enter your email"
@@ -152,7 +193,7 @@ const SignUp = (props) => {
                                 variant="contained"
                                 fullWidth
                                 sx={{ margin: "15px 0" }}
-                                onClick={signup}
+                                onClick={handleCompleteSignUp}
                             >
                                 Complete Sign Up
                             </Button>
