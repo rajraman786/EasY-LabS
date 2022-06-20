@@ -1,0 +1,31 @@
+.CodeMirror {
+    font-size: 16px;
+    line-height: 1.4;
+    /* padding-top: 20px; */
+    height: calc(100vh - 50px - 60px - 35px);
+}
+/* .react-codemirror2 {
+  height: 100vh;
+} */
+.CodeMirror:first-child {
+    display: none;
+}
+
+.navigation {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.left,
+.right {
+    margin: 0 10px;
+}
+
+.sample-run {
+    height: 250px;
+}
+
+.Mui-disabled {
+    color: #000;
+}
