@@ -147,7 +147,7 @@ import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
         },
         {
             student_id:2,
-            name: "Deep",
+            name: "Deepdarshan",
             entry_no: "19BCS031",
             department: "CSE",
             myLabs: [],
@@ -157,7 +157,21 @@ import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
                 "3" : [],
                 "4" : []
             }
+        },
+        {
+            student_id:3,
+            name: "Raman Raj",
+            entry_no: "19BCS063",
+            department: "CSE",
+            myLabs: [],
+            problems_solved: {
+                "1" : [1],
+                "2" : [],
+                "3" : [],
+                "4" : []
+            }
         }
+
     ]
     
   }

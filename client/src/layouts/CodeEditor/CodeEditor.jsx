@@ -100,7 +100,8 @@ const Editor = ({ language, value, setEditorState }) => {
             })
             .then((res) => setCodeOutput(res.data.output))
             .catch((err) => console.log(err));
-    };
+        };
+        console.log(codeOutput);
 
     // const themeArray = [];
 
@@ -131,6 +132,14 @@ const Editor = ({ language, value, setEditorState }) => {
                 <ControlledEditorComponent
                     onBeforeChange={handleChangeEditor}
                     // value={value}
+                    onPaste={(e) => {
+                        e.preventDefault();
+                        return false;
+                    }}
+                    onCopy={(e) => {
+          e.preventDefault();
+          return false;
+        }}
                     value={code}
                     className="code-mirror-wrapper"
                     options={{

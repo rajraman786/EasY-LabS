@@ -55,7 +55,7 @@ const SignUp = (props) => {
             }
             navigate("/complete-signup");
         } else {
-            alert("Plese enter correct email");
+            alert("Please enter correct email");
         }
     };
 
