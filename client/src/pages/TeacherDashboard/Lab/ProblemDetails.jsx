@@ -23,7 +23,7 @@ const ProblemDetails = ({labDetails}) => {
         </div>
         <div className="table-container-2">
                 <table>
-                    <caption>Students</caption>
+                    <caption>Students Submissions</caption>
                     <thead>
                         <tr>
                             <th scope="col">S.No.</th>
