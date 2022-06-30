@@ -34,7 +34,7 @@ const SideMenu = ({onCollapse,labDetails}) => {
   return (
     <div className={`side-menu ${inactive ? "inactive" : ""}`}>
       <div className='top-section'>
-        <NavLink to="/teacher-dashboard/all">
+        <NavLink to="/student-dashboard/my-labs">
             <div className='logo'>
               <img src={logo} />
             </div>
