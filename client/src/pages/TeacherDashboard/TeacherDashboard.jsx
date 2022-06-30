@@ -39,7 +39,7 @@ const TeacherDashboard = ({connectedLabDetails:lab_details,setConnectedLabDetail
                 <Route path="/my-labs"  element={<My labDetails={labDetails}/>} />
                 <Route path="/my-labs/:name/:index/*"  element={<Lab/>} >
                     <Route path="all" element={<AllProblems labDetails={labDetails}/>} />
-                    <Route path="today" element={<TodayProblems/>} />
+                    <Route path="today" element={<TodayProblems labDetails={labDetails} />} />
                     <Route path="add" element={<CreateProblem labDetails={labDetails}  setLabDetails={setLabDetails} />}/>   
                     <Route path="students" element={<Students labDetails={labDetails} />} />
                     <Route path="submissions/:student" element={<Submissions labDetails={labDetails}  />}/>

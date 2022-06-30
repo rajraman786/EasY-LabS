@@ -2,11 +2,11 @@ import React, { useState,useEffect } from "react";
 import "./CreateProblem.css";
 import TextField from "@mui/material/TextField";
 import Button from "../../../components/Button";
-import {useParams} from "react-router-dom";
+import {useParams,NavLink} from "react-router-dom";
 
 const CreateProblem = ({labDetails,setLabDetails}) => {
 
-    const {index:lab} = useParams();
+    const {index:lab,name} = useParams();
 
     const lab_id = parseInt(lab);
 
@@ -15,30 +15,46 @@ const CreateProblem = ({labDetails,setLabDetails}) => {
     const [sampleInput, setSampleInput] = useState("");
     const [sampleOutput, setsampleOutput] = useState("");
     const date= new Date();
-    const [newProblem,setNewProblem] = useState({
-        problem_id:NaN,
-        problem_name: "",
-        problem_desc: "",
-        sample_input: "",
-        sample_output: "",
-        date: ""
-    });
-
     const day = date.getDate();
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
 
-    const newDate = `${day}-${month}-${year}`;
+    var newDate = `${day}-${month}-${year}`;
+    const [newProblem, setNewProblem] = useState({
+        problem_id: labDetails.all_labs[lab_id].problems.length + 1,
+        problem_name: "",
+        problem_desc: "",
+        sample_input: "",
+        sample_output: "",
+        date: newDate,
+    });
+
+    
 
     const addQueButtonHandler = ()=>{
-        var newArray = [newProblem,...labDetails.all_labs[lab_id].problems];
+        var newArray = [...labDetails.all_labs[lab_id].problems, newProblem];
 
+        labDetails.all_labs[lab_id].problems = newArray;
+
+        setLabDetails({...labDetails});
     }
     
     useEffect(() => {
         setNewProblem({...newProblem,problem_id:labDetails.all_labs[lab_id].problems.length+1,date:newDate});
 
     },[labDetails]);
+
+    useEffect(() => {
+
+        setNewProblem({
+            ...newProblem,
+            problem_name:questionName,
+            sample_input:sampleInput,
+            sample_output:sampleOutput,
+            problem_desc: questionStatement
+        })
+        
+    }, [questionName,questionStatement,sampleInput,sampleOutput]);
 
     console.log(newProblem);
 
@@ -93,7 +109,11 @@ const CreateProblem = ({labDetails,setLabDetails}) => {
                 </span>
                 <br />
                 <br />
-                <Button variant="contained" onClick={addQueButtonHandler}>Add Question</Button>
+                <NavLink to={`/teacher-dashboard/my-labs/${name}/${lab_id}/today`}>
+                    <Button variant="contained" onClick={addQueButtonHandler}>
+                        Add Question
+                    </Button>
+                </NavLink>
             </form>
         </>
     );
