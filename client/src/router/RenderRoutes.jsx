@@ -137,7 +137,7 @@ import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
             name: "Kunal Kanotra",
             entry_no: "19BCS047",
             department: "CSE",
-            myLabs: [],
+            myLabs: [1],
             problems_solved: {
                 "1" : [1],
                 "2" : [],
@@ -187,142 +187,144 @@ export const RenderRoutes = ({ routes }) => {
     //console.log("KK",connectedLabDetails)
 
     var tempRoutes = [
-    // {
-    //     path: "/",
-    //     key: "ROOT",
-    //     exact: true,
-    //     component: () => {
-    //         if (!localStorage.getItem("token")) {
-    //             return <Redirect to={"/login"} />;
-    //         }
-    //         return <Redirect to={"/app"} />;
-    //     },
-    //     routes: [],
-    // },
-    // {
-    //     path: "/login",
-    //     key: "LOGIN",
-    //     exact: true,
-    //     component: Login,
-    //     routes: [],
-    // },
-    // {
-    //     path: "/app",
-    //     exact: false,
-    //     key: "APP",
-    //     component: (props) => {
-    //         if (!localStorage.getItem("token")) {
-    //             return <Redirect to={"/"} />;
-    //         }
-    //         return <RenderRoutes {...props} />;
-    //     },
-    //     routes: [
-    //         {
-    //             path: "/app",
-    //             key: "APP_ROOT",
-    //             exact: true,
-    //             component: Home,
-    //         },
-    //     ],
-    // },
-    {
-        path: "/",
-        key: "HOME",
-        exact: false,
-        component: Home,
-        props: {},
-        // routes: [],
-    },
-    {
-        path: "/get-started",
-        key: "GET STARTED",
-        exact: "true",
-        component: GetStarted,
-        props: {
-            isLogin: true,
+        // {
+        //     path: "/",
+        //     key: "ROOT",
+        //     exact: true,
+        //     component: () => {
+        //         if (!localStorage.getItem("token")) {
+        //             return <Redirect to={"/login"} />;
+        //         }
+        //         return <Redirect to={"/app"} />;
+        //     },
+        //     routes: [],
+        // },
+        // {
+        //     path: "/login",
+        //     key: "LOGIN",
+        //     exact: true,
+        //     component: Login,
+        //     routes: [],
+        // },
+        // {
+        //     path: "/app",
+        //     exact: false,
+        //     key: "APP",
+        //     component: (props) => {
+        //         if (!localStorage.getItem("token")) {
+        //             return <Redirect to={"/"} />;
+        //         }
+        //         return <RenderRoutes {...props} />;
+        //     },
+        //     routes: [
+        //         {
+        //             path: "/app",
+        //             key: "APP_ROOT",
+        //             exact: true,
+        //             component: Home,
+        //         },
+        //     ],
+        // },
+        {
+            path: "/",
+            key: "HOME",
+            exact: false,
+            component: Home,
+            props: {},
+            // routes: [],
         },
-        routes: [],
-    },
-    {
-        path: "/access-account",
-        key: "ACCESS-ACCOUNT",
-        exact: "true",
-        component: GetStarted,
-        props: {
-            isLogin: true,
+        {
+            path: "/get-started",
+            key: "GET STARTED",
+            exact: "true",
+            component: GetStarted,
+            props: {
+                isLogin: true,
+            },
+            routes: [],
         },
-        routes: [],
-    },
-    {
-        path: "/create-account",
-        key: "CREATE-ACCOUNT",
-        exact: "true",
-        component: GetStarted,
-        props: {
-            isLogin: false,
+        {
+            path: "/access-account",
+            key: "ACCESS-ACCOUNT",
+            exact: "true",
+            component: GetStarted,
+            props: {
+                isLogin: true,
+            },
+            routes: [],
         },
-        routes: [],
-    },
-    {
-        path: "/signup",
-        key: "SIGNUP",
-        exact: false,
-        component: SignUp,
-        props: {
-            startSignUp: true,
+        {
+            path: "/create-account",
+            key: "CREATE-ACCOUNT",
+            exact: "true",
+            component: GetStarted,
+            props: {
+                isLogin: false,
+            },
+            routes: [],
         },
-        routes: [],
-    },
-    {
-        path: "/complete-signup",
-        key: "SIGNUP",
-        exact: false,
-        component: SignUp,
-        props: {
-            startSignUp: false,
+        {
+            path: "/signup",
+            key: "SIGNUP",
+            exact: false,
+            component: SignUp,
+            props: {
+                startSignUp: true,
+            },
+            routes: [],
         },
-        routes: [],
-    },
-    {
-        path: "/login",
-        key: "LOGIN",
-        exact: false,
-        component: Login,
-        props: {},
-        routes: [],
-    },
-    {
-        path: "/problem/:id",
-        key: "PROBLEM",
-        exact: true,
-        component: ProblemEditor,
-        props: {},
-        routes: [],
-    },
-    {
-        path: "/teacher-dashboard/*",
-        key: "TEACHER-DASHBOARD",
-        exact: true,
-        component: TeacherDashboard,
-        props: {
-            connectedLabDetails:connectedLabDetails,
-            setConnectedLabDetails:setConnectedLabDetails
+        {
+            path: "/complete-signup",
+            key: "SIGNUP",
+            exact: false,
+            component: SignUp,
+            props: {
+                startSignUp: false,
+            },
+            routes: [],
         },
-        routes: [],
-    },
-    {
-        path: "/student-dashboard/*",
-        key: "STUDENT-DASHBOARD",
-        exact: true,
-        component: StudentDashboard,
-        props: {
-            connectedLabDetails:connectedLabDetails,
-            setConnectedLabDetails:setConnectedLabDetails
+        {
+            path: "/login",
+            key: "LOGIN",
+            exact: false,
+            component: Login,
+            props: {},
+            routes: [],
         },
-        routes: [],
-    }
-  
-];
+        {
+            path: "/:problem/:student/:lab/:id",
+            key: "PROBLEM",
+            exact: true,
+            component: ProblemEditor,
+            props: {
+                connectedLabDetails: connectedLabDetails,
+                setConnectedLabDetails: setConnectedLabDetails
+            },
+            routes: [],
+        },
+        {
+            path: "/teacher-dashboard/*",
+            key: "TEACHER-DASHBOARD",
+            exact: true,
+            component: TeacherDashboard,
+            props: {
+                connectedLabDetails: connectedLabDetails,
+                setConnectedLabDetails: setConnectedLabDetails,
+            },
+            routes: [],
+        },
+        {
+            path: "/student-dashboard/*",
+            key: "STUDENT-DASHBOARD",
+            exact: true,
+            component: StudentDashboard,
+            props: {
+                connectedLabDetails: connectedLabDetails,
+                setConnectedLabDetails: setConnectedLabDetails,
+            },
+            routes: [],
+        },
+    ];
 
     ROUTES.push(...tempRoutes)
     return (

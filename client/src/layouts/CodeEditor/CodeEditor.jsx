@@ -5,6 +5,7 @@ import { Controlled as ControlledEditorComponent } from "react-codemirror2";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import axios from "axios";
 import { TextField, ToggleButton, ToggleButtonGroup } from "@mui/material";
+import {useParams} from "react-router-dom";
 
 import "codemirror/lib/codemirror.css";
 
@@ -22,7 +23,14 @@ import "codemirror/mode/clike/clike";
 import "codemirror/addon/edit/closebrackets";
 import "codemirror/addon/edit/closetag";
 
-const Editor = ({ language, value, setEditorState }) => {
+const Editor = ({ language, value, setEditorState , labDetails,setConnectedLabDetails }) => {
+
+    const {id,lab,student:student_id} = useParams();
+
+    const problem_id = parseInt(id);
+
+    const lab_id = parseInt(lab);
+
     const langStore = [
         {
             id: 1,
@@ -102,6 +110,16 @@ const Editor = ({ language, value, setEditorState }) => {
             .catch((err) => console.log(err));
         };
         console.log(codeOutput);
+
+    const handleSubmit = () => {
+        
+        labDetails.students[student_id - 1].problems_solved[lab_id].push(problem_id);
+
+        const newLabDetails = {...labDetails};
+
+        setConnectedLabDetails(newLabDetails);
+
+    }
 
     // const themeArray = [];
 
@@ -227,7 +245,7 @@ const Editor = ({ language, value, setEditorState }) => {
                     >
                         Test Code
                     </Button>
-                    <Button variant="contained" size="medium">
+                    <Button variant="contained" size="medium" onClick={handleSubmit}>
                         Submit
                     </Button>
                 </div>
