@@ -55,7 +55,7 @@ const Home = (props) => {
                                 list of programs and editor will be available at one place .
                             </Typography>
                             <br />
-                            <Link to="/get-started"style={{ textDecoration: 'none'}}>
+                            <Link to="/login"style={{ textDecoration: 'none'}}>
                                 <Button
                                     variant="contained"
                                     size="large"

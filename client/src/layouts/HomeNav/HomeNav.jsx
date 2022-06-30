@@ -63,7 +63,7 @@ const HomeNav = (props) => {
                             contact
                         </Typography>
 
-                        <Link to="/create-account" style={{ textDecoration: "none" }}>
+                        <Link to="/signup" style={{ textDecoration: "none" }}>
                             <Typography
                                 component="span"
                                 sx={{
