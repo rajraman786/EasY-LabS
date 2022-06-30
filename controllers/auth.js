@@ -42,7 +42,7 @@ exports.verifyEmail = (req, res, next) => {
             }
         })
         .catch((err) => {
-            console.log("Fir aagaya maa chudane");
+            console.log("Error");
             return;
         });
 };
