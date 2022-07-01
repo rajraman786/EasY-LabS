@@ -71,7 +71,10 @@ const SignUp = (props) => {
                 password: signupDetails.password,
                 role: signupDetails.role,
             })
-            .then((res) => alert("SignUp complete"))
+            .then((res) => {
+                navigate("/login");
+                alert("SignUp complete");
+            })
             .catch((err) => alert("Error"));
     };
 
