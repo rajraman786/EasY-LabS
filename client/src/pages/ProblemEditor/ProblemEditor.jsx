@@ -1,7 +1,7 @@
 import { Divider, Grid, Typography } from "@mui/material";
 import CodeEditor from "../../layouts/CodeEditor/CodeEditor";
 import Logo from "../../assets/long-logo.png";
-import { useParams } from "react-router-dom";
+import { useParams , NavLink} from "react-router-dom";
 
 const ProblemEditor = (props) => {
     const { problem: name, id:problem_id, lab:lab_id } = useParams();
@@ -15,7 +15,10 @@ const ProblemEditor = (props) => {
     return (
         <>
             <div style={{ height: "50px" }}>
-                <img src={Logo} alt="logo" height="100%" />
+                <NavLink to={`/teacher-dashboard/all`}>
+                    <img src={Logo} alt="logo" height="100%" />
+                </NavLink>
+                
             </div>
             <Grid
                 container

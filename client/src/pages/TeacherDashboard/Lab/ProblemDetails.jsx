@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,NavLink } from 'react-router-dom';
 import "./Lab.css";
 
 const ProblemDetails = ({labDetails}) => {
@@ -47,7 +47,9 @@ const ProblemDetails = ({labDetails}) => {
                     <td>{student.entry_no}</td>
                     <td>{student.department}</td>
                     <td>
-                         <button className={`enroll-btn-1`}>View</button>
+                         <NavLink to={`/solutions/${student.student_id}/${lab_id}/${problem_id}`}>
+                              <button className={`enroll-btn-1`}>View</button>
+                         </NavLink>
                     </td>
                 </tr>
                 )

@@ -1,6 +1,7 @@
 import React from 'react';
 import {useParams,useLocation,Outlet,NavLink} from "react-router-dom";
 import "./Lab.css";
+import Logo from "../../../assets/long-logo.png";
 
 const Lab = () => {
 
@@ -9,6 +10,12 @@ const Lab = () => {
   return (
     <>
     <div className='heading'>
+      <div style={{ height: "50px" }}>
+                <NavLink to={`/teacher-dashboard/all`}>
+                    <img src={Logo} alt="logo" height="100%" />
+                </NavLink>
+                
+            </div>
       <div className="leftSide">
           <h1>{name.toUpperCase()}</h1>
       </div>
