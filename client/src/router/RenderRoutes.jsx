@@ -10,6 +10,7 @@ import TeacherDashboard from "../pages/TeacherDashboard/TeacherDashboard";
 import All from "../pages/TeacherDashboard/AllLabs/All";
 import NotFound from "../pages/NotFound";
 import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
+import Solutions from "../pages/TeacherDashboard/Lab/Solutions";
 
 // const Login = lazy(() => import("pages/auth/Login"));
 // const Home = lazy(() => import("pages/Home"));
@@ -172,6 +173,24 @@ import StudentDashboard from "../pages/StudentDashboard/StudentDashboard";
             }
         }
 
+    ],
+
+    solutions: [
+        {
+            solution_id:1,
+            solution: "ABCD",
+            student_id: 1,
+            problem_id: 1,
+            lab_id: 1
+        },
+        {
+            solution_id:2,
+            solution: "ABCD",
+            student_id: 1,
+            problem_id: 2,
+            lab_id: 2
+        }
+
     ]
     
   }
@@ -324,6 +343,17 @@ export const RenderRoutes = ({ routes }) => {
             },
             routes: [],
         },
+        {
+            path: "/solutions/:student/:lab/:id",
+            key: "SOLUTION",
+            exact: true,
+            component: Solutions,
+            props: {
+                connectedLabDetails: connectedLabDetails,
+                setConnectedLabDetails: setConnectedLabDetails
+            },
+            routes: [],
+        }
     ];
 
     ROUTES.push(...tempRoutes)

@@ -115,6 +115,16 @@ const Editor = ({ language, value, setEditorState , labDetails,setConnectedLabDe
         
         labDetails.students[student_id - 1].problems_solved[lab_id].push(problem_id);
 
+        labDetails.solutions.push(
+            {
+                solution_id:labDetails.solutions.length+1,
+                solution:code,
+                student_id:student_id,
+                lab_id:lab_id+1,
+                problem_id:problem_id
+            }
+        )
+
         const newLabDetails = {...labDetails};
 
         setConnectedLabDetails(newLabDetails);
